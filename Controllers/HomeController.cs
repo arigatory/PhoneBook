@@ -7,7 +7,7 @@ namespace PartyInvites.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(Repository.Contacts);
         }
 
         [HttpGet]
@@ -19,8 +19,16 @@ namespace PartyInvites.Controllers
         [HttpPost]
         public ViewResult ContactForm(Contact contact)
         {
-            //TODO store responce 
-            return View();
+            if (ModelState.IsValid)
+            {
+                Repository.AddContact(contact);
+                return View("ContactAdded", contact);
+            }
+            else
+            {
+                return View();
+            }
+
         }
     }
 }
