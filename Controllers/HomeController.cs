@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Models;
+using System.Linq;
 
 namespace PartyInvites.Controllers
 {
@@ -11,9 +12,11 @@ namespace PartyInvites.Controllers
         }
 
         [HttpGet]
-        public ViewResult ContactForm()
+        public ViewResult ContactForm(int id)
         {
-            return View();
+            var contact = Repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
+
+            return View(contact);
         }
 
         [HttpPost]
@@ -21,6 +24,9 @@ namespace PartyInvites.Controllers
         {
             if (ModelState.IsValid)
             {
+                var cnt = Repository.Contacts.Where(x => x.Id == contact.Id).SingleOrDefault();
+                if (cnt != null)
+                    Repository.RemoveContact(cnt);
                 Repository.AddContact(contact);
                 return View("ContactAdded", contact);
             }
@@ -30,5 +36,6 @@ namespace PartyInvites.Controllers
             }
 
         }
+
     }
 }

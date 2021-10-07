@@ -30,7 +30,7 @@
             @foreach (PhoneBook.Models.Contact c in Model)
             {
                 <tr>
-                    <th><a href="#">@c.Id</a></th>
+                    <th>@Html.ActionLink($"{@c.Id}", "ContactForm", new { id=c.Id })</th>
                     <th>@c.LastName</th>
                     <th>@c.FirstName</th>
                     <th>@c.MiddleName</th>
