@@ -6,15 +6,20 @@ namespace PartyInvites.Controllers
 {
     public class HomeController : Controller
     {
+        private IPhoneBookRepository repository;
+        public HomeController(IPhoneBookRepository repo)
+        {
+            repository = repo;
+        }
         public IActionResult Index()
         {
-            return View(Repository.Contacts);
+            return View(repository.Contacts);
         }
 
         [HttpGet]
         public ViewResult ContactForm(int id)
         {
-            var contact = Repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
+            var contact = repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
 
             return View(contact);
         }
@@ -24,10 +29,7 @@ namespace PartyInvites.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cnt = Repository.Contacts.Where(x => x.Id == contact.Id).SingleOrDefault();
-                if (cnt != null)
-                    Repository.RemoveContact(cnt);
-                Repository.AddContact(contact);
+                repository.AddContact(contact);
                 return View("ContactAdded", contact);
             }
             else
