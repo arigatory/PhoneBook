@@ -40,18 +40,14 @@ namespace PartyInvites.Controllers
         }
 
         [HttpPost]
-        public ViewResult ContactDeleted(Contact contact)
+        public ViewResult ContactDeleted(int id)
         {
-            if (contact.Id != 0)
+            var contact = repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
+            if (contact != null)
             {
                 repository.RemoveContact(contact);
-                return View("ContactDeleted");
             }
-            else
-            {
-                return View();
-            }
-
+            return View("ContactDeleted");
         }
     }
 }

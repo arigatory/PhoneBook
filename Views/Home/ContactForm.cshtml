@@ -55,7 +55,10 @@
     </form>
     @if (Model != null)
     {
-        <form asp-action="ContactDeleted" method="post" class="m-2"><button class="btn btn-danger btn-sm">Удалить</button></form>
+        <form asp-action="ContactDeleted" method="post" class="m-2">
+            <input type="hidden" asp-for="Id" />
+            <button class="btn btn-danger btn-sm">Удалить</button>
+        </form>
     }
 </body>
 </html>
