@@ -9,6 +9,6 @@ namespace PhoneBook.Models
     {
         IQueryable<Contact> Contacts { get; }
         public void AddContact(Contact contact);
-        public void RemoveContact(Contact cnt);
+        public void RemoveContact(Contact contact);
     }
 }

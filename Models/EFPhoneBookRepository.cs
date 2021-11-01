@@ -23,7 +23,8 @@ namespace PhoneBook.Models
 
         public void RemoveContact(Contact contact)
         {
-            context.Remove(contact);
+            context.Remove(context.Contacts.Single(c => c.Id == contact.Id));
+            //context.Remove(contact); Так тоже не удаляет..
             context.SaveChanges();
         }
 
