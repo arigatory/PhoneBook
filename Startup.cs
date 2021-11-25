@@ -28,7 +28,7 @@ namespace PhoneBook
             services.AddDbContext<PhoneBookDbContext>(opts => {
                 opts.UseSqlServer(Configuration["ConnectionStrings:PhoneBookConnection"]);    
             });
-            services.AddScoped<IPhoneBookRepository, EFPhoneBookRepository>();
+            services.AddScoped<IContactRepository, EFContactRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

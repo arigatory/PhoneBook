@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Models
 {
-    public class EFPhoneBookRepository : IPhoneBookRepository
+    public class EFContactRepository : IContactRepository
     {
         private PhoneBookDbContext context;
-        public EFPhoneBookRepository(PhoneBookDbContext ctx)
+        public EFContactRepository(PhoneBookDbContext ctx)
         {
             context = ctx;
         }
-        public IQueryable<Contact> Contacts => context.Contacts;
+        public IQueryable<Contact> AllContacts => context.Contacts;
 
         public void AddContact(Contact contact)
         {
             context.Update(contact);
             context.SaveChanges();
+        }
+
+        public Contact GetContactById(int id)
+        {
+            return context.Contacts.SingleOrDefault(c => c.Id == id);
         }
 
         public void RemoveContact(Contact contact)

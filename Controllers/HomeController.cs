@@ -6,20 +6,20 @@ namespace PartyInvites.Controllers
 {
     public class HomeController : Controller
     {
-        private IPhoneBookRepository repository;
-        public HomeController(IPhoneBookRepository repo)
+        private IContactRepository repository;
+        public HomeController(IContactRepository repo)
         {
             repository = repo;
         }
         public IActionResult Index()
         {
-            return View(repository.Contacts);
+            return View(repository.AllContacts);
         }
 
         [HttpGet]
         public ViewResult ContactForm(int id)
         {
-            var contact = repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
+            var contact = repository.AllContacts.Where(x => x.Id == id).SingleOrDefault();
 
             return View(contact);
         }
@@ -42,7 +42,7 @@ namespace PartyInvites.Controllers
         [HttpPost]
         public ViewResult ContactDeleted(int id)
         {
-            var contact = repository.Contacts.Where(x => x.Id == id).SingleOrDefault();
+            var contact = repository.AllContacts.Where(x => x.Id == id).SingleOrDefault();
             if (contact != null)
             {
                 repository.RemoveContact(contact);
