@@ -1,0 +1,51 @@
+﻿@model PhoneBook.Models.Contact
+
+<h5 class="bg-primary text-white text-center m-2 p-2">Данные контакта</h5>
+<form asp-action="ContactForm" method="post" class="m-2">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="FirstName">
+            Имя:
+        </label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleName">
+            Отчество:
+        </label>
+        <input asp-for="MiddleName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">
+            Фамилия:
+        </label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone">
+            Телефон:
+        </label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">
+            Адрес:
+        </label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">
+            Описание:
+        </label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+     <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-primary" asp-action="ContactSaved">Сохранить</button>
+</form>
+    @if (Model != null)
+{
+    <form asp-action="ContactDeleted" method="post" class="m-2">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger btn-sm">Удалить</button>
+    </form>
+}

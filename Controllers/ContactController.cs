@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Models;
 using PhoneBook.ViewModels;
+using System.Linq;
 
 namespace PhoneBook.Controllers
 {
@@ -28,5 +29,40 @@ namespace PhoneBook.Controllers
             }
             return View(contact);
         }
+
+        [HttpPost]
+        public IActionResult ContactSaved(Contact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("ContactForm");
+            }
+            
+            _contactRepository.UpdateContact(contact);
+            return View("ContactSaved", contact);
+
+        }
+
+        [HttpPost]
+        public ViewResult ContactDeleted(int id)
+        {
+            var contact = _contactRepository.AllContacts.Where(x => x.Id == id).SingleOrDefault();
+            if (contact != null)
+            {
+                _contactRepository.RemoveContact(contact);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ContactForm(int id)
+        {
+
+            var contact = _contactRepository.GetContactById(id);
+           
+            return View(contact);
+
+        }
+
     }
 }

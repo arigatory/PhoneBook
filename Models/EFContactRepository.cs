@@ -8,29 +8,30 @@ namespace PhoneBook.Models
 {
     public class EFContactRepository : IContactRepository
     {
-        private PhoneBookDbContext context;
+        private PhoneBookDbContext _context;
         public EFContactRepository(PhoneBookDbContext ctx)
         {
-            context = ctx;
+            _context = ctx;
         }
-        public IQueryable<Contact> AllContacts => context.Contacts;
 
-        public void AddContact(Contact contact)
+        public IQueryable<Contact> AllContacts => _context.Contacts;
+
+        public void UpdateContact(Contact contact)
         {
-            context.Update(contact);
-            context.SaveChanges();
+            _context.Update(contact);
+            _context.SaveChanges();
         }
 
         public Contact GetContactById(int id)
         {
-            return context.Contacts.SingleOrDefault(c => c.Id == id);
+            return _context.Contacts.SingleOrDefault(c => c.Id == id);
         }
 
         public void RemoveContact(Contact contact)
         {
-            context.Remove(context.Contacts.Single(c => c.Id == contact.Id));
+            _context.Remove(_context.Contacts.Single(c => c.Id == contact.Id));
             //context.Remove(contact); Так тоже не удаляет..
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
     }

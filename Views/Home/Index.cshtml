@@ -17,8 +17,8 @@
     <tbody>
         @foreach (PhoneBook.Models.Contact c in Model)
         {
-            <partial name="_ContactCard" model="c" />
+            <partial name="_ContactRow" model="c" />
         }
     </tbody>
 </table>
-<a class="btn btn-primary" asp-action="ContactForm">Добавить контакт</a>
+<a class="btn btn-primary" asp-controller="Contact" asp-action="ContactForm">Добавить контакт</a>
