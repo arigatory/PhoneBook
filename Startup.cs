@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,10 @@ namespace PhoneBook
             services.AddDbContext<PhoneBookDbContext>(opts => {
                 opts.UseSqlServer(Configuration["ConnectionStrings:PhoneBookConnection"]);    
             });
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<PhoneBookDbContext>();
             services.AddScoped<IContactRepository, EFContactRepository>();
+            services.AddSession();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +49,7 @@ namespace PhoneBook
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -53,6 +57,7 @@ namespace PhoneBook
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
             SeedData.EnsurePopulated(app);
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Models;
 using PhoneBook.ViewModels;
 using System.Linq;
@@ -60,6 +61,7 @@ namespace PhoneBook.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult ContactForm(int id)
         {
