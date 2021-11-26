@@ -1,0 +1,12 @@
+﻿@model Contact
+<tr>
+    <th>
+        <a asp-controller="Contact" asp-action="Details" asp-route-id="@Model.Id" class="h3">@Model.Id</a>
+    </th>
+    <th>@Model.LastName</th>
+    <th>@Model.FirstName</th>
+    <th>@Model.MiddleName</th>
+    <th>@Model.Phone</th>
+    <th>@Model.Address</th>
+    <th>@Model.Description</th>
+</tr>

@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Models
 {
-    public interface IPhoneBookRepository
+    public interface IContactRepository
     {
-        IQueryable<Contact> Contacts { get; }
+        IQueryable<Contact> AllContacts { get; }
+        public void UpdateContact(Contact contact);
         public void AddContact(Contact contact);
         public void RemoveContact(Contact contact);
+        public Contact GetContactById(int id);
     }
 }

@@ -1,46 +1,24 @@
-﻿@model IEnumerable<PhoneBook.Models.Contact>
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Телефонная книга</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-</head>
-<body>
-    <div class="text-center">
+﻿
+<div class="text-center">
     <h1>Все контакты</h1>
-
-    </div>
-    <table class="table table-bordered table-striped table-sm"> 
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-                <th>Номер телефона</th>
-                <th>Адрес</th>
-                <th>Описание</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (PhoneBook.Models.Contact c in Model)
-            {
-                <tr>
-                    <th>@Html.ActionLink($"{@c.Id}", "ContactForm", new { id=c.Id })</th>
-                    <th>@c.LastName</th>
-                    <th>@c.FirstName</th>
-                    <th>@c.MiddleName</th>
-                    <th>@c.Phone</th>
-                    <th>@c.Address</th>
-                    <th>@c.Description</th>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <a class="btn btn-primary" asp-action="ContactForm">Добавить контакт</a>
-</body>
-</html>
+</div>
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Номер телефона</th>
+            <th>Адрес</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PhoneBook.Models.Contact c in Model)
+        {
+            <partial name="_ContactRow" model="c" />
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-controller="Contact" asp-action="ContactForm">Добавить контакт</a>
