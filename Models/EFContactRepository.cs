@@ -30,9 +30,13 @@ namespace PhoneBook.Models
         public void RemoveContact(Contact contact)
         {
             _context.Remove(_context.Contacts.Single(c => c.Id == contact.Id));
-            //context.Remove(contact); Так тоже не удаляет..
             _context.SaveChanges();
         }
 
+        public void AddContact(Contact contact)
+        {
+            _context.Add(contact);
+            _context.SaveChanges();
+        }
     }
 }

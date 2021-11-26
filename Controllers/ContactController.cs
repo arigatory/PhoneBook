@@ -37,8 +37,14 @@ namespace PhoneBook.Controllers
             {
                 return View("ContactForm");
             }
-            
-            _contactRepository.UpdateContact(contact);
+            if (contact.Id == 0)
+            {
+                _contactRepository.AddContact(contact);
+            }
+            else
+            {
+                _contactRepository.UpdateContact(contact);
+            }
             return View("ContactSaved", contact);
 
         }
