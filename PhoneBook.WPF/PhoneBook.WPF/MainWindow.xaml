@@ -8,13 +8,48 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        <!--Header-->
+        <Border Grid.ColumnSpan="2" Background="#007BFF">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <TextBlock Text="PhoneBook" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        
+        <!--ContactsList-->
+        <ListView Grid.Row="1" FontSize="15">
+            <ListViewItem>Ivan</ListViewItem>
+            <ListViewItem>Andrey</ListViewItem>
+        </ListView>
+        
+        <!--ContactDetails-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="5">
+                <TextBlock Text="Имя" FontSize="15"/>
+                <TextBox FontSize="15"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Content="Сохранить" Padding="15 5" Margin="5" Background="#007BFF" Foreground="White" FontSize="15"/>
+                <Button Content="Удалить" Padding="15 5" Margin="5" Background="#dc3545" Foreground="White" FontSize="15"/>
+            </StackPanel>
+
+        </Grid>
+
+        
     </Grid>
 </Window>
