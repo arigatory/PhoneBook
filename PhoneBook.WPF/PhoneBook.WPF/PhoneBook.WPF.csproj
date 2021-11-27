@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PhoneBook.csproj" />
     <ProjectReference Include="..\..\PhoneBook\PhoneBook.csproj" />
   </ItemGroup>
 
