@@ -1,13 +1,34 @@
 ﻿using PhoneBook.Models;
+using PhoneBook.WPF.DataProvider;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PhoneBook.WPF.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase 
     {
+        private readonly IContactDataProvider _contactDataProvider;
         private Contact _selectedContact;
+        public ObservableCollection<Contact> Contacts { get; } = new();
+
+        public MainViewModel(IContactDataProvider contactDataProvider)
+        {
+            _contactDataProvider = contactDataProvider;
+        }
+
+        public async Task Load()
+        {
+            Contacts.Clear();
+            var contacts = await _contactDataProvider.LoadContacts();
+            foreach (var contact in contacts)
+            {
+                Contacts.Add(contact);
+            }
+
+            SelectedContact = Contacts.FirstOrDefault();
+        }
+
 
         public Contact SelectedContact
         {
@@ -21,15 +42,6 @@ namespace PhoneBook.WPF.ViewModels
                 }
 
             }
-        }
-
-        public ObservableCollection<Contact> Contacts { get; } = new();
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

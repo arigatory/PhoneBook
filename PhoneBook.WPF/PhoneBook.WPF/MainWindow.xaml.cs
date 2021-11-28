@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PhoneBook.WPF.DataProvider;
+using PhoneBook.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,16 @@ namespace PhoneBook.WPF
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel = new MainViewModel(new ContactWebApiDataProvider());
+            DataContext = ViewModel;
+            this.Loaded += MainWindow_Loaded;
         }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.Load();
+        }
+
+        public MainViewModel ViewModel { get; }
     }
 }

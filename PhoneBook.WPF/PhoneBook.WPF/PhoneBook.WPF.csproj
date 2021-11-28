@@ -7,7 +7,12 @@
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Test</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\PhoneBook\PhoneBook.csproj" />
