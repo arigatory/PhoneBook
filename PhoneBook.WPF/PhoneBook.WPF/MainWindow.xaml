@@ -25,11 +25,21 @@
         </Border>
         
         <!--ContactsList-->
-        <ListView Grid.Row="1" FontSize="15">
-            <ListViewItem>Ivan</ListViewItem>
-            <ListViewItem>Andrey</ListViewItem>
+        <ListView Grid.Row="1" 
+                  FontSize="15" 
+                  ItemsSource="{Binding Contacts, Mode=OneWay}"
+                  SelectedItem="{Binding SelectedContact, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding LastName}" Margin="0 0 5 0"/>
+                        <TextBlock Text="{Binding FirstName}" Margin="0 0 5 0"/>
+                        <TextBlock Text="{Binding MiddleName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-        
+
         <!--ContactDetails-->
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -39,8 +49,36 @@
             </Grid.RowDefinitions>
 
             <StackPanel Margin="5">
+                <TextBlock Text="Фамилия" FontSize="15"/>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.LastName, Mode=TwoWay}"></TextBox>
+
                 <TextBlock Text="Имя" FontSize="15"/>
-                <TextBox FontSize="15"></TextBox>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.FirstName, Mode=TwoWay}"></TextBox>
+
+                <TextBlock Text="Отчество" FontSize="15"/>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.MiddleName, Mode=TwoWay}"></TextBox>
+
+                <TextBlock Text="Телефон" FontSize="15"/>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.Phone, Mode=TwoWay}"></TextBox>
+
+                <TextBlock Text="Адрес" FontSize="15"/>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.Address, Mode=TwoWay}"></TextBox>
+
+                <TextBlock Text="Комментарий" FontSize="15"/>
+                <TextBox FontSize="15"
+                         Margin="0 0 0 5"
+                         Text="{Binding SelectedContact.Description, Mode=TwoWay}"></TextBox>
+
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal">

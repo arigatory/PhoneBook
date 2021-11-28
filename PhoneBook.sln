@@ -5,22 +5,27 @@ VisualStudioVersion = 17.0.31710.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook", "PhoneBook\PhoneBook.csproj", "{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.WPF", "PhoneBook.WPF\PhoneBook.WPF\PhoneBook.WPF.csproj", "{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.WPF", "PhoneBook.WPF\PhoneBook.WPF\PhoneBook.WPF.csproj", "{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{2BB5D042-49F3-4E38-AD8C-FBEEC26EBAB8}.Test|Any CPU.Build.0 = Test|Any CPU
 		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{8E9C69E8-02F3-49F3-8BE5-6DB79ABFAAB2}.Test|Any CPU.Build.0 = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
